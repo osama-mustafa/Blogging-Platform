@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Models\Message;
 use Illuminate\Contracts\Mail\Mailable;
+use App\Models\Tag;
+
 
 
 class EmailController extends Controller
@@ -19,8 +21,10 @@ class EmailController extends Controller
     public function index()
     {
         $categories = Category::limit(4)->get();
+        $tags       = Tag::limit(6)->get();
         return view('contact.contact-form')->with([
-            'categories' => $categories
+            'categories' => $categories,
+            'tags'      => $tags
         ]);
     }
 

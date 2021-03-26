@@ -7,6 +7,7 @@ Blogging Platform created with Laravel 8 Framework
 - Author Pages
 - Categories Pages
 - Tags Pages
+- Search Page
 - Contact Form
 - Comments
 - Admin Dashboard

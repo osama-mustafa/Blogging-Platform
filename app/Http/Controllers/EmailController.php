@@ -54,7 +54,7 @@ class EmailController extends Controller
             'message'   => $sanitizedMessage
         ]);
 
-        Mail::to('mr.osama.mustafa@gmail.com')->send(new SendEmail($data));
+        Mail::to('youremail@example.com')->send(new SendEmail($data));
         return back()->with([
             'success_message' => 'Thanks For contacting Us!'
         ]);

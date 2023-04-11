@@ -18,8 +18,9 @@ class CreateMessagesTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('title');
-            $table->text('message');
+            $table->text('body');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

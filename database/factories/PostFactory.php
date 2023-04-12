@@ -24,11 +24,11 @@ class PostFactory extends Factory
         $title = $this->faker->sentence(4);
 
         return [
-            'title'     => $title,
-            'body'      => $this->faker->paragraph(4),
-            'slug'      => Str::slug($title),
-            'user_id'   => $this->faker->numberBetween(1, 10),
-            'image'     => null
+            'title'         => $title,
+            'body'          => $this->faker->paragraph(4),
+            'slug'          => Str::slug($title),
+            'user_id'       => $this->faker->numberBetween(1, 10),
+            'category_id'   => $this->faker->numberBetween(1, 5)
         ];
     }
 }

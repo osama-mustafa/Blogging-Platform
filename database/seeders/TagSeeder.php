@@ -15,7 +15,7 @@ class TagSeeder extends Seeder
     {
         $tagsNames = ['programming', 'it', 'hardware', 'networks', 'cyber-security'];
         foreach($tagsNames as $tagName) {
-            DB::table('categories')->insert([
+            DB::table('tags')->insert([
                 'name' => $tagName
             ]);
         }

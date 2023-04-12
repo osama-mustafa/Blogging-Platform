@@ -16,9 +16,8 @@ class TagFactory extends Factory
      */
     public function definition(): array
     {
-        $tagsNames = ['programming', 'it', 'networks', 'cyber-security'];
         return [
-            'name' => $tagsNames[array_rand($tagsNames)]
+           
         ];
     }
 }

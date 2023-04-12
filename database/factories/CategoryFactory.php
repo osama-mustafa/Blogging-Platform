@@ -15,12 +15,9 @@ class CategoryFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-
     {
-        $categoriesNames = ['programming', 'it', 'networks', 'cyber-security'];
         return [
-            'name'        => $categoriesNames[array_rand($categoriesNames)],
-            'description' => $this->faker->text(40)
+            
         ];
     }
 }

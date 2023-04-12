@@ -25,7 +25,7 @@ class PostFactory extends Factory
 
         return [
             'title'     => $title,
-            'body'      => $this->faker->sentence(12),
+            'body'      => $this->faker->paragraph(4),
             'slug'      => Str::slug($title),
             'user_id'   => $this->faker->numberBetween(1, 10),
             'image'     => null

@@ -33,6 +33,8 @@ class UserSeeder extends Seeder
             'is_admin' => false
         ]);
 
+        // Seed additional users for the system
+        
         User::factory()->count(10)->create();
     }
 }

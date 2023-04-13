@@ -30,7 +30,7 @@
                 <ul class="list-unstyled mb-0">
                     @foreach ($categories as $category)
                         <li class="lead">
-                            <a href="{{ route('category.page', ['category_name' => $category->category_name]) }}">{{ $category->category_name }}</a>
+                            <a href="{{ route('category.page', ['category_name' => $category->name]) }}">{{ $category->name }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     @foreach ($tags as $tag)
-                        <a href="{{ route('tag.page', ['tag_name' => $tag->tag_name]) }}" class="badge badge-pill badge-primary lead" style="font-size: 14">{{ $tag->tag_name }}</a>
+                        <a href="{{ route('tag.page', ['tag_name' => $tag->name]) }}" class="badge badge-pill badge-primary lead" style="font-size: 14">{{ $tag->name }}</a>
                     @endforeach
                 </div>
             </div>

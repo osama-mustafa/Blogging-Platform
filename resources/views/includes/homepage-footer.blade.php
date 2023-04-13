@@ -9,7 +9,7 @@
                 <ul class="list-group">
                     @foreach ($categories as $category)
                         <li class=" d-flex justify-content-between align-items-center">
-                        <a href="{{ route('category.page', ['category_name' => $category->category_name]) }}" class="text-white">{{ $category->category_name }}</a>
+                        <a href="{{ route('category.page', ['category_name' => $category->name]) }}" class="text-white">{{ $category->name }}</a>
                         <span class="badge badge-primary badge-pill">{{ $category->posts->count() }}</span>
                         </li>
                     @endforeach

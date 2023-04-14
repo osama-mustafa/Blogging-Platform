@@ -39,23 +39,16 @@
                 <input type="password" class="form-control" name="password" id="password">
             </div>  
             <div class="form-group">
-                <label for="short_bio">Short Biography</label>
-                <input type="text" class="form-control" name="short_bio" id="short_bio" value="{{ $user->short_bio }}">
+                <label for="biography">Short Biography</label>
+                <input type="text" class="form-control" name="biography" id="short_bio" value="{{ $user->biography }}">
             </div>
             <div class="form-group">
-                <label for="profile_image">Profile Image</label>
-                <input type="file" name="profile_image">
+                <label for="image">Profile Image</label>
+                <input type="file" name="image">
             </div>
 
-            @if (auth()->user()->profile_image == null)
-                <div>
-                    <img class="img-profile mb-2" width="200" src="{{ asset('img/undraw_profile.svg') }}">
-                </div>
-            @else 
-                <div>
-                    <img class="img-profile mb-2" width="200" src="{{ asset('/img') }}/{{$user->profile_image}}">
-                </div>
-            @endif
+            <!-- Profile image -->
+            <x-images.avatar :user="auth()->user()" />
 
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>

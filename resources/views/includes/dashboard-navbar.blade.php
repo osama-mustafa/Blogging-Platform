@@ -16,10 +16,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                        @if (auth()->user()->profile_image == null)
-                            <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}">
+                        @if (auth()->user()->image)
+                            <img class="img-profile rounded-circle" src="{{ asset('storage/images') }}/{{ auth()->user()->image }}">
                         @else 
-                            <img class="img-profile rounded-circle" src="{{ asset('/img') }}/{{auth()->user()->profile_image}}">
+                            <img class="img-profile rounded-circle" src="{{ asset('/img/profile.png') }}">
                         @endif
                     </a>
                     <!-- Dropdown - User Information -->

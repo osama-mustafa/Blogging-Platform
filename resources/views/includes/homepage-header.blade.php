@@ -13,12 +13,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
 
-  {{-- <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/blog-home.css') }}" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="{{ asset('css/blog-home.css') }}" rel="stylesheet">
-  
 
 </head>

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Traits\ImageUpload;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    use ImageUpload;
+
     public function index()
     {
         $users = User::paginate(8);
@@ -25,6 +28,7 @@ class UserController extends Controller
     {
         $validatedData = $request->validated();
         $validatedData['password'] = Hash::make(trim($request->password));
+        $validatedData['image']    = $this->handleUploadImage($request);
         User::create($validatedData);
         return back()->with([
             'success_message' => 'User has been created'

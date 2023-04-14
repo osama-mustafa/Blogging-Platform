@@ -39,6 +39,18 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" id="password">
             </div>  
+
+            <!-- Profile image -->
+            @if ($user->image)
+                <div>
+                    <img class="big-avatar mb-3" src="{{ asset('storage/images/') }}/{{ $user->image }}" alt="avatar">
+                </div>
+            @else
+                <div>
+                    <img class="big-avatar mb-3" src="{{ asset('/img/profile.png') }}" alt="avatar">
+                </div>
+            @endif
+
             <button type="submit" class="btn btn-primary">Update User</button>
         </form>
 

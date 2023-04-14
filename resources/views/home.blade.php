@@ -7,7 +7,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -21,8 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-    <x-head.tinymce-config/>
+    <!-- Custome styles -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
+    <x-head.tinymce-config/>
 
 </head>
 <body>
@@ -70,20 +71,7 @@
                 <!-- End of Content Wrapper -->
         
             </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- <script>
-                tinymce.init({
-                  selector: 'textarea',
-                  plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-                  toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-                  toolbar_mode: 'floating',
-                  tinycomments_mode: 'embedded',
-                  tinycomments_author: 'Author name',
-                  entity_encoding : "raw",
-               });
-            </script> -->
-            
+            <!-- End of Page Wrapper -->            
 
         <!-- Core plugin JavaScript-->
         <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -98,5 +86,5 @@
         <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
         <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
-    </body>
-    </html>
+</body>
+</html>

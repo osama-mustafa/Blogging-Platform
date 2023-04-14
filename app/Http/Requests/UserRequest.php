@@ -23,15 +23,17 @@ class UserRequest extends FormRequest
     {
         if (request()->method() === 'POST') {
             return [
-                'name' => ['required', 'unique:users,name', 'max:255'],
-                'email' => ['required', 'email', 'unique:users,email'],
-                'password' => ['required', 'confirmed']
+                'name'      => ['required', 'unique:users,name', 'max:255'],
+                'email'     => ['required', 'email', 'unique:users,email'],
+                'password'  => ['required', 'confirmed'],
+                'image'     => ['sometimes']
             ];
         } else {
             return [
-                'name' => ['required', "unique:users,name,{$this->user->id}", 'max:255'],
-                'email' => ['required', 'email'],
-                'password' => ['sometimes']
+                'name'      => ['required', "unique:users,name,{$this->user->id}", 'max:255'],
+                'email'     => ['required', 'email'],
+                'password'  => ['sometimes'],
+                'image'     => ['sometimes']
             ];
         }
     }

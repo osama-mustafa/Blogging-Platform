@@ -38,7 +38,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>
-                            <a href="{{ route('users.edit', ['user_id' => $user->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
                         </td>
                         <td>
                             @if ($user->is_admin == true)

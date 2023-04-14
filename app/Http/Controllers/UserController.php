@@ -4,17 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'admin']);
-    }
-
     public function index()
     {
         $users = User::paginate(8);
@@ -38,49 +31,28 @@ class UserController extends Controller
         ]);
     }
 
-
-    // Edit User By Admin
-
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
         return view('admin.users.edit')->with([
             'user' => $user
         ]);
     }
 
-
-    // Update User By Admin
-
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        $user = User::findOrFail($id);
-        $request->validate([
+        $validatedData  = $request->validated();
+        $user->name     = $validatedData['name'];
+        $user->email    = $validatedData['email'];
 
-            'name' => 'required|min:4|max:100',
-            'email' => [
-                'required',
-                Rule::unique('users')->ignore($user->id)
-            ]
-        ]);
-
-        $user->name  = $request->name;
-        $user->email = $request->email;
-
-        if (!empty($request->password))
-        {
-            $user->password = bcrypt($request->password);
+        if ($request->filled('password')) {
+            $user->password = Hash::make(trim($request->password));
         }
 
         $user->save();
         return back()->with([
             'success_message' => 'User has been updated'
         ]);
-
     }
-
-
-    // Make User as Admin
 
     public function makeAdmin($id)
     {
@@ -92,9 +64,6 @@ class UserController extends Controller
         ]);
     }
     
-
-    // Remove User from Admins
-
     public function removeAdmin($id)
     {
         $user           = User::findOrFail($id);
@@ -104,5 +73,4 @@ class UserController extends Controller
             'success_message' => 'User is removed from admins'
         ]);
     }
-
 }

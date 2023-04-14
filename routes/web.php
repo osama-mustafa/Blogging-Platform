@@ -31,13 +31,15 @@ Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function() {
 
     // Routes For Users
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('users/store', [UserController::class, 'store'])->name('users.store');
-    Route::get('/users/edit/{user_id}', [UserController::class, 'edit'])->name('users.edit');
-    Route::post('/users/update/{user_id}', [UserController::class, 'update'])->name('users.update');
+    // Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    // Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    // Route::post('users/store', [UserController::class, 'store'])->name('users.store');
+    // Route::get('/users/edit/{user_id}', [UserController::class, 'edit'])->name('users.edit');
+    // Route::post('/users/update/{user_id}', [UserController::class, 'update'])->name('users.update');
     Route::get('/users/make-admin/{user_id}', [UserController:: class, 'makeAdmin'])->name('make.admin');
     Route::get('/users/remove-admin/{user_id}', [UserController::class, 'removeAdmin'])->name('remove.admin');
+
+    Route::resource('users', UserController::class);
 
 
     // Route For Posts

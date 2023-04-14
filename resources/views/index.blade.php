@@ -16,8 +16,7 @@
                 <!-- Blog Entries Column -->
                 <div class="col-md-8 pt-5">
 
-                    {{-- <h1 class="my-4">Blogging Platform
-                    <small></small></h1> --}}
+                    <h1 class="my-4">Blogging Platform<small></small></h1>
 
 
 

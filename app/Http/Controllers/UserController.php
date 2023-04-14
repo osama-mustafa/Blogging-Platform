@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
-
-
-    // Show All Users
 
     public function index()
     {
@@ -25,30 +23,16 @@ class UserController extends Controller
         ]);
     }
 
-    // Create User
-
     public function create()
     {
         return view('admin.users.create');
     }
 
-
-    // Store User
-
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name'      => 'required|min:4|max:100',
-            'email'     => 'required|unique:users|email',
-            'password'  => 'required|confirmed'
-        ]);
-
-        $user           = new User;
-        $user->name     = $request->name;
-        $user->email    = $request->email;
-        $user->password = bcrypt($request->password);
-
-        $user->save();
+        $validatedData = $request->validated();
+        $validatedData['password'] = Hash::make(trim($request->password));
+        User::create($validatedData);
         return back()->with([
             'success_message' => 'User has been created'
         ]);

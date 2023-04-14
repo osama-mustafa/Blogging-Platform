@@ -7,7 +7,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <script src="https://cdn.tiny.cloud/1/5ad4yc3qeot34f2y119rdwrae3an7osijpxqycatfs1z11j3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,6 +20,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <x-head.tinymce-config/>
+
 
 </head>
 <body>
@@ -70,7 +72,7 @@
             </div>
             <!-- End of Page Wrapper -->
 
-            <script>
+            <!-- <script>
                 tinymce.init({
                   selector: 'textarea',
                   plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
@@ -80,7 +82,7 @@
                   tinycomments_author: 'Author name',
                   entity_encoding : "raw",
                });
-            </script>
+            </script> -->
             
 
         <!-- Core plugin JavaScript-->

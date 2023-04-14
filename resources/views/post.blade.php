@@ -17,7 +17,7 @@
       <div class="col-lg-8">
 
         <!-- Title -->
-        <h1 class="pt-5">{{ $post->post_title }}</h1>
+        <h1 class="pt-5">{{ $post->title }}</h1>
 
         <!-- Author -->
 
@@ -30,22 +30,28 @@
             <span class="mr-2">
                 <i class="fas fa-clock ml-2" style="color: grey"></i> {{ $post->created_at->diffForHumans() }}
             </span>
-            <span>
-                <i class="fas fa-folder mr-1" style="color: grey"></i>  
-                <a href="{{ route('category.page', [$postCategory->category_name]) }}">{{ $postCategory->category_name }}</a> 
-            </span>
+            @if($postCategory)
+                <span>
+                    <i class="fas fa-folder mr-1" style="color: grey"></i>  
+                    <a href="{{ route('category.page', [$postCategory->name]) }}">{{ $postCategory->name }}</a> 
+                </span>
+            @endif
         </p>
   
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ asset('/img') }}/{{$post->post_image}}" alt="">
+        @if ($post->image)
+            <img class="img-fluid rounded" src="{{ asset('/img') }}/{{$post->post_image}}" alt="">
+        @else
+            <img class="img-fluid rounded" src="{{ asset('/img/post.png') }}" alt="">
+        @endif
 
         <hr>
 
         <!-- Post Content -->
 
-        <p>{!! $post->post_body !!}</p>
+        <p>{!! $post->body !!}</p>
         @auth
             @if (auth()->user()->is_admin)
                 <div>
@@ -77,8 +83,8 @@
                 <form action="{{ route('comments.store', ['post_id' => $post->id]) }}" method="POST">
                     @csrf
                     <div class="form-group">
-                      <label for="comment_body">Comment</label>
-                      <textarea name="comment_body" class="form-control" rows="3"></textarea>
+                      <label for="body">Comment</label>
+                      <textarea name="body" class="form-control" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -95,7 +101,7 @@
                     <div class="media mb-4">
                         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                         <div class="media-body">
-                            {{ $comment->comment_body }} <br>
+                            {{ $comment->body }} <br>
                             <small>sent at: {{ $comment->created_at }}</small>
                         </div>
                     </div>

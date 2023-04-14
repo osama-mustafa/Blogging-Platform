@@ -28,19 +28,21 @@
             @csrf
             <div class="form-group">
               <label for="post_title">Title</label>
-              <input type="text" class="form-control" name="post_title" id="post_title" value="{{ $post->post_title }}">
+              <input type="text" class="form-control" name="post_title" id="post_title" value="{{ $post->title }}">
             </div>
             <div class="form-group">
               <label for="post_body">Content</label>
-              <textarea class="form-control" name="post_body" id="post_body" rows="3">{{ $post->post_body }}</textarea>
+              <!-- <textarea class="form-control" name="post_body" id="post_body" rows="3">{{ $post->post_body }}</textarea> -->
+              <x-forms.tinymce-editor name="body" value="{{ $post->body }}"/>
+
             </div>
 
             <h5>Categories</h5>
             @foreach ($categories as $category)
                 <div class="checkbox">
-                    <input type="checkbox" name="categories[]" id="{{ $category->category_name }}"
+                    <input type="checkbox" name="categories[]" id="{{ $category->name }}"
                      value="{{ $category->id }}" {{ in_array($category->id, $postCategories) ? 'checked' : '' }}>
-                    <label for="{{ $category->category_name }}">{{ $category->category_name }}</label>
+                    <label for="{{ $category->name }}">{{ $category->name }}</label>
                 </div>
             @endforeach
 
@@ -48,7 +50,7 @@
             @foreach ($tags as $tag)
                 <div class="checkbox">
                     <input type="checkbox" value="{{ $tag->id }}" name="tags[]"  {{ in_array($tag->id, $postTags) ? 'checked' : '' }}>
-                    <label for="">{{ $tag->tag_name }}</label>
+                    <label for="">{{ $tag->name }}</label>
                 </div>
             @endforeach
 

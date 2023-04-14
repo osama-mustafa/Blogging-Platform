@@ -28,11 +28,11 @@
             @csrf
             <div class="form-group">
                 <label for="post_title">Title</label>
-                <input type="text" class="form-control" name="title" id="post_title" placeholder="Post Title">
+                <input type="text" class="form-control" name="title" id="title" placeholder="Post Title">
             </div>
             <div class="form-group">
                 <label for="post_body">Content</label>
-                <textarea class="form-control" name="body" id="post_body" rows="3"></textarea>
+                <x-forms.tinymce-editor name="body"/>
             </div>
 
             <h5 class="mt-3">Categories</h5>

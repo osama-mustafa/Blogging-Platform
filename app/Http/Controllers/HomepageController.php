@@ -37,8 +37,8 @@ class HomepageController extends Controller
         $post_slug       = $post->post_slug;
         $categories      = Category::limit(4)->get();
         $tags            = Tag::limit(6)->get();
-        $postCategory    = Post::find($id)->categories()->first(); 
-        $comments        = Comment::where('comment_status', true)->where('post_id', $id)->get();
+        $postCategory    = $post->categories()->first(); 
+        $comments        = Comment::where('status', true)->where('post_id', $id)->get();
 
         return view('post')->with([
             'post'         => $post,
@@ -88,7 +88,7 @@ class HomepageController extends Controller
     {
         $categories      = Category::limit(4)->get();
         $tags            = Tag::limit(6)->get();
-        $category        = Category::where('category_name', $category_name)->firstOrFail();
+        $category        = Category::where('name', $category_name)->firstOrFail();
         $categoryPosts   = $category->posts()->paginate(4);
 
         return view('category')->with([

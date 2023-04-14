@@ -2,7 +2,16 @@
 
 @section('content')
     
-<h2 class="mb-4">Categories</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="mb-4">Categories</h2>
+        </div>
+        <div class="col">
+           <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm float-left" role="button"> <i class="fas fa-layer-group"></i> Create</a>
+        </div>
+    </div>
+</div>
 
 @if (session('success_message'))
     <div class="alert alert-success">

@@ -19,21 +19,27 @@
                 <th scope="col">Title</th>
                 <th scope="col">Image</th>
                 <th scope="col">Author</th>
-                <th scope="col">Edit Post</th>
-                <th scope="col">Delete Post</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
                         <td>
-                           <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->post_slug]) }}">
-                                {{ $post->post_title }}
+                           <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">
+                                {{ $post->title }}
                             </a> 
                         </td>
-                        <td>
-                            <img src="{{ asset('img/') }}/{{$post->post_image}}" class="img-thumbnail" width="100" alt="">
-                        </td>
+                        @if ($post->image)
+                            <td>
+                                <img src="{{ asset('img/') }}/{{$post->image}}" class="img-thumbnail" width="100" alt="">
+                            </td>
+                        @else
+                            <td>
+                                <img src="{{ asset('img/post.png') }}" class="img-thumbnail" width="100" alt="">
+                            </td>
+                        @endif
                         <td>
                             <a href="{{ route('author.page', ['user_name' => $post->user->name]) }}">{{ $post->user->name }}</a>
                             

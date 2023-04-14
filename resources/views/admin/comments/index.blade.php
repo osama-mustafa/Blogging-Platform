@@ -27,14 +27,14 @@
                 @foreach ($comments as $comment)
                     <tr>
                         <td>{{ $comment->id }}</td>
-                        <td>{{ $comment->comment_body }}</td>
+                        <td>{{ $comment->body }}</td>
                         <td>{{ $comment->created_at }}</td>
                         <td>
-                            @if ($comment->comment_status == false)
+                            @if ($comment->status == false)
                                 <a class="btn btn-success" href="{{ route('approve.comment', ['comment_id' => $comment->id]) }}"><i class="fas fa-thumbs-up"></i> Approve</a>
                             @endif
 
-                            @if ($comment->comment_status == true)
+                            @if ($comment->status == true)
                                 <a class="btn btn-primary" href="{{ route('disapprove.comment', ['comment_id' => $comment->id]) }}"><i class="fas fa-thumbs-down"></i> Disapporve</a>
                             @endif
                         </td>

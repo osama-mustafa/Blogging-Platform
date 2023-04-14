@@ -18,7 +18,7 @@
             @csrf 
             @method('POST')
             <div class="form-group">
-                <input type="text" name="tag_name" class="form-control" placeholder="ex. php, laravel, HTML">
+                <input type="text" name="name" class="form-control" placeholder="ex. php, laravel, HTML">
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>    
@@ -38,7 +38,7 @@
                 @foreach ($tags as $tag)
                     <tr>
                         <td>{{ $tag->id }}</td>
-                        <td>{{ $tag->tag_name }}</td>
+                        <td>{{ $tag->name }}</td>
                         <td>
                             <form action="{{ route('tags.delete', ['tag_id' => $tag->id]) }}" method="POST">
                                 @csrf

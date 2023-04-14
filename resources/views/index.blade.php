@@ -30,9 +30,15 @@
                                         <h2>{{ $post->post_title }}</h2>
                                     </a>
                                 </div>
-                                <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">
-                                    <img class="card-img-top" src="{{ asset('/img') }}/{{$post->post_image}}" alt="Card image cap">
-                                </a>
+                                @if ($post->image)
+                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">
+                                        <img class="card-img-top" src="{{ asset('/img') }}/{{$post->image}}" alt="Card image cap">
+                                    </a>
+                                @else
+                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">
+                                        <img class="card-img-top" src="{{ asset('/img/post.png') }}" alt="Card image cap">
+                                    </a>
+                                @endif
                             
                                 <div class="card-body">
                                     <h2 class="card-title">{{ $post->title }}</h2>

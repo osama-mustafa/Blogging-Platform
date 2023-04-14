@@ -25,7 +25,7 @@
             @foreach ($categories as $category)
                 <tr>
                     <td>{{ $category->id }}</td>
-                    <td>{{ $category->category_name }}</td>
+                    <td>{{ $category->name }}</td>
                     <td>
                         <a href="{{ route('categories.edit', ['category_id' => $category->id]) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a>
                     </td>

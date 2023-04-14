@@ -28,19 +28,19 @@
             @csrf
             <div class="form-group">
                 {{-- <label for="name">Username</label> --}}
-                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name" autocomplete="off">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter a name" autocomplete="off">
             </div>
             <div class="form-group">
                 {{-- <label for="post_title">Email</label> --}}
-                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Valid Email" autocomplete="off">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter a valid email" autocomplete="off">
             </div>
             <div class="form-group">
                 {{-- <label for="password">Password</label> --}}
-                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter a password">
             </div>
             <div class="form-group">
                 {{-- <label for="password_confirmation">Confirm Password</label> --}}
-                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
+                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm password">
             </div>
 
             <button type="submit" class="btn btn-primary">Create User</button>

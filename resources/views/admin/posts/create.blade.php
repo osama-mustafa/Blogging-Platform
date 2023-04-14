@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="post_body">Content</label>
-                <x-forms.tinymce-editor name="body"/>
+                <x-forms.tinymce-editor name="body" value=""/>
             </div>
 
             <h5 class="mt-3">Categories</h5>

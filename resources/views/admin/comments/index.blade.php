@@ -31,18 +31,18 @@
                         <td>{{ $comment->created_at }}</td>
                         <td>
                             @if ($comment->status == false)
-                                <a class="btn btn-success" href="{{ route('approve.comment', ['comment_id' => $comment->id]) }}"><i class="fas fa-thumbs-up"></i> Approve</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('approve.comment', ['comment_id' => $comment->id]) }}"><i class="fas fa-thumbs-up"></i> Approve</a>
                             @endif
 
                             @if ($comment->status == true)
-                                <a class="btn btn-primary" href="{{ route('disapprove.comment', ['comment_id' => $comment->id]) }}"><i class="fas fa-thumbs-down"></i> Disapporve</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('disapprove.comment', ['comment_id' => $comment->id]) }}"><i class="fas fa-thumbs-down"></i> Disapporve</a>
                             @endif
                         </td>
                         <td>
                             <form action="{{ route('delete.comment', ['comment_id' => $comment->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-trash"></i> Delete</button>
                             </form>
                         </td>
                     </tr>

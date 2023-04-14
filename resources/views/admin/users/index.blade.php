@@ -29,15 +29,15 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>
-                            <a href="{{ route('users.edit', ['user_id' => $user->id]) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{{ route('users.edit', ['user_id' => $user->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
                         </td>
                         <td>
                             @if ($user->is_admin == true)
-                                <a class="btn btn-danger" href="{{ route('remove.admin', ['user_id' => $user->id]) }}"><i class="fas fa-lock"></i> Remove Admin</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('remove.admin', ['user_id' => $user->id]) }}"><i class="fas fa-lock"></i> Remove Admin</a>
                             @endif
 
                             @if ($user->is_admin == false)
-                                <a class="btn btn-success" href="{{ route('make.admin', ['user_id' => $user->id]) }}"><i class="fas fa-unlock"></i> Make Admin</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('make.admin', ['user_id' => $user->id]) }}"><i class="fas fa-unlock"></i> Make Admin</a>
                             @endif
                         </td>
                         <td>{{ $user->posts->count() }}</td>

@@ -21,13 +21,13 @@
             <h2 class="pt-4">{{ $user->name }}</h2>
             <hr>
             <div class="row">
-                @if ($user->profile_image == null)
-                    <img class="img-profile rounded-circle" width="150" height="150" src="{{ asset('img/undraw_profile.svg') }}">
+                @if ($user->image)
+                    <img class="img-profile rounded-circle" width="150" height="150" src="{{ asset('/img') }}/{{$user->image}}">
                 @else 
-                    <img class="img-profile rounded-circle" width="150" height="150" src="{{ asset('/img') }}/{{$user->profile_image}}">
+                    <img class="img-profile rounded-circle" width="150" height="150" src="{{ asset('img/undraw_profile.svg') }}">
                 @endif
                 <div class="col">
-                    <p>{{ $user->short_bio }}</p>
+                    <p>{{ $user->bio }}</p>
                 </div>
             </div>
             <hr>
@@ -43,16 +43,22 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-md">
-                                <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->post_slug]) }}">
-                                    <img class="mt-2 mb-2 ml-2 img-fluid" src="{{ asset('/img') }}/{{$post->post_image}}" alt="Responsive image">
-                                </a>
+                                @if ($post->image)
+                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">
+                                        <img class="mt-2 mb-2 ml-2 img-fluid" src="{{ asset('/img') }}/{{$post->image}}" alt="Responsive image">
+                                    </a>
+                                @else
+                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">
+                                        <img class="mt-2 mb-2 ml-2 img-fluid" src="{{ asset('/img/post.png') }}" alt="Responsive image">
+                                    </a>
+                                @endif
                             </div>
                             <div class="col-md">
                                 <h3 class="mt-2">
-                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->post_slug]) }}">{{ $post->post_title }}</a>
+                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">{{ $post->post_title }}</a>
                                 </h3>
                                 <p>{!! Str::words($post->post_body, 15, '...')  !!}</p>
-                                <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->post_slug]) }}" class="btn btn-primary">Read More &rarr;</a>
+                                <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}" class="btn btn-primary">Read More &rarr;</a>
                                 <div class="mt-3 text-muted">
                                     <span class="mr-2">
                                         <i class="fas fa-user ml-2"></i>
@@ -65,8 +71,8 @@
                                         @foreach ($post->categories as $category)
                                             <span>
                                                 <i class="fas fa-folder ml-1"></i>
-                                                <a href="{{ route('category.page', ['category_name' => $category->category_name]) }}">
-                                                    {{ $category->category_name }}
+                                                <a href="{{ route('category.page', ['category_name' => $category->name]) }}">
+                                                    {{ $category->name }}
                                                 </a>
                                             </span>
                                         @endforeach

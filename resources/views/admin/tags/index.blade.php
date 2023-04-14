@@ -13,14 +13,13 @@
 <div class="col-md-10">
 
     <div class="col-md-5 mb-4">
-        <h3>Create Tag</h3>
         <form action="{{ route('tags.store') }}" method="POST">
             @csrf 
             @method('POST')
             <div class="form-group">
                 <input type="text" name="name" class="form-control" placeholder="ex. php, laravel, HTML">
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Create</button>
         </form>    
     </div>
 

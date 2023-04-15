@@ -38,11 +38,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_name' => 'required|min:2|max:100|'
+            'name' => 'required|min:2|max:100|'
         ]);
 
         $category                = new Category;
-        $category->category_name = $request->category_name; 
+        $category->name = $request->name; 
         $category->save();
         return back()->with([
             'success_message' => 'Category has been created successfully'

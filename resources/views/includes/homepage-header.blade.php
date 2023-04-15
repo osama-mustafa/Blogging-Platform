@@ -19,5 +19,7 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/blog-home.css') }}" rel="stylesheet">
 
+    <!-- Custome styles -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>

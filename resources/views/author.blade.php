@@ -21,11 +21,12 @@
             <h2 class="pt-4">{{ $user->name }}</h2>
             <hr>
             <div class="row">
-                @if ($user->image)
+                <!-- @if ($user->image)
                     <img class="img-profile rounded-circle" width="150" height="150" src="{{ asset('/img') }}/{{$user->image}}">
                 @else 
                     <img class="img-profile rounded-circle" width="150" height="150" src="{{ asset('img/undraw_profile.svg') }}">
-                @endif
+                @endif -->
+                <x-images.avatar :user="$user" />
                 <div class="col">
                     <p>{{ $user->bio }}</p>
                 </div>

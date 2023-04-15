@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    // Show All Tags in Admin Dashboard
-
     public function index()
     {
         $tags = Tag::all();
@@ -17,35 +16,39 @@ class TagController extends Controller
         ]);
     }
 
-    // Create Tag
-
     public function create()
     {
         return view('admin.tags.index');
     }
 
-    // Store Tag
-
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        $request->validate([
-            'tag_name' => 'required|min:2|max:30|string'
-        ]);
-
-        Tag::create([
-            'tag_name' => $request->tag_name,
-        ]);
-
+        $validatedData = $request->validated();
+        Tag::create($validatedData);
         return back()->with([
             'success_message' => 'Tag has been created!'
         ]);
     }
 
-    // Delete Tag (Delete Forever!)
-
-    public function destroy($id)
+    public function edit(Tag $tag)
     {
-        $tag = Tag::findOrFail($id);
+        return view('admin.tags.edit')->with([
+            'tag' => $tag
+        ]);
+    }
+
+    public function update(TagRequest $request, Tag $tag)
+    {
+        $validatedData = $request->validated();
+        $tag->name = $validatedData['name'];
+        $tag->save();
+        return back()->with([
+            'success_message' => 'Tag has been updated!'
+        ]);
+    }
+
+    public function destroy(Tag $tag)
+    {
         $tag->delete();
         return back()->with([
             'success_message' => 'Tag has been deleted!'

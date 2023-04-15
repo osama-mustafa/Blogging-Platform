@@ -16,7 +16,7 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">{{ $tag->tag_name }}</h1>
+        <h1 class="my-4">{{ $tag->name }}</h1>
 
         <!-- Blog Post -->
         @if ($tag->posts->count() > 0)
@@ -26,14 +26,14 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-md">
-                                <img class="mt-2 mb-2 ml-2 img-fluid" src="{{ asset('/img') }}/{{$post->post_image}}" alt="Responsive image">
+                                <img class="mt-2 mb-2 ml-2 img-fluid" src="{{ asset('/img') }}/{{$post->image}}" alt="Responsive image">
                             </div>
                             <div class="col-md mb-2">
                                 <h3 class="mt-2">
-                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->post_slug]) }}">{{ $post->post_title }}</a>
+                                    <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}">{{ $post->post_title }}</a>
                                 </h3>
                                 <p>{!! Str::words($post->post_body, 15, '...')  !!}</p>
-                                <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->post_slug]) }}" class="btn btn-primary">Read More &rarr;</a>
+                                <a href="{{ route('single.post', ['post_id' => $post->id, 'post_slug' => $post->slug]) }}" class="btn btn-primary">Read More &rarr;</a>
                                 <div class="mt-3 text-muted">
                                     <span>
                                         <i class="fas fa-user"></i>

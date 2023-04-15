@@ -30,15 +30,9 @@ Auth::routes();
 
 Route::middleware(['auth', 'admin'])->group(function() {
 
-    // Routes For Users
-    // Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    // Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    // Route::post('users/store', [UserController::class, 'store'])->name('users.store');
-    // Route::get('/users/edit/{user_id}', [UserController::class, 'edit'])->name('users.edit');
-    // Route::post('/users/update/{user_id}', [UserController::class, 'update'])->name('users.update');
-    Route::get('/users/make-admin/{user_id}', [UserController:: class, 'makeAdmin'])->name('make.admin');
+    // Routes for users
+    Route::get('/users/make-admin/{user_id}', [UserController:: class, 'addAdmin'])->name('make.admin');
     Route::get('/users/remove-admin/{user_id}', [UserController::class, 'removeAdmin'])->name('remove.admin');
-
     Route::resource('users', UserController::class);
 
 
@@ -52,10 +46,11 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::delete('/posts/trashed/delete/{post_id}', [PostController::class, 'deleteTrashed'])->name('delete.trashed.post');
 
     // Routes For Tags
-    Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
-    Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
-    Route::post('/tags/store', [TagController::class, 'store'])->name('tags.store');
-    Route::delete('/tags/delete/{tag_id}', [TagController::class, 'destroy'])->name('tags.delete');
+    // Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
+    // Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
+    // Route::post('/tags/store', [TagController::class, 'store'])->name('tags.store');
+    // Route::delete('/tags/delete/{tag_id}', [TagController::class, 'destroy'])->name('tags.delete');
+    Route::resource('tags', TagController::class);
 
 
     // Routes For Comments

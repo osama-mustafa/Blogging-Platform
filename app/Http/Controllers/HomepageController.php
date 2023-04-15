@@ -122,7 +122,7 @@ class HomepageController extends Controller
     {
         $categories = Category::limit(4)->get();
         $tags       = Tag::limit(6)->get();
-        $tag        = Tag::where('tag_name', $tag_name)->firstOrFail();
+        $tag        = Tag::where('name', $tag_name)->firstOrFail();
         $tagPosts   = $tag->posts()->paginate(4);
 
         return view('tag')->with([

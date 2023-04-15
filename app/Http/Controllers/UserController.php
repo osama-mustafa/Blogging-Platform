@@ -58,7 +58,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function makeAdmin($id)
+    public function addAdmin($id)
     {
         $user           = User::findOrFail($id);
         $user->is_admin = true;

@@ -15,7 +15,6 @@
     <div class="col-md-5 mb-4">
         <form action="{{ route('tags.store') }}" method="POST">
             @csrf 
-            @method('POST')
             <div class="form-group">
                 <input type="text" name="name" class="form-control" placeholder="ex. php, laravel, HTML">
             </div>
@@ -30,6 +29,7 @@
               <tr>
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
+                <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
@@ -39,7 +39,10 @@
                         <td>{{ $tag->id }}</td>
                         <td>{{ $tag->name }}</td>
                         <td>
-                            <form action="{{ route('tags.delete', ['tag_id' => $tag->id]) }}" method="POST">
+                            <a href="{{ route('tags.edit', ['tag' => $tag]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('tags.destroy', ['tag' => $tag]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-trash"></i> Delete</button>

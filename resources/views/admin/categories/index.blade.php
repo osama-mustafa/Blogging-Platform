@@ -2,16 +2,17 @@
 
 @section('content')
     
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h2 class="mb-4">Categories</h2>
-        </div>
-        <div class="col">
-           <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm float-left" role="button"> <i class="fas fa-layer-group"></i> Create</a>
-        </div>
+    <h2>Create Category</h2>
+    <div class="col-md-5 mb-4">
+        <form action="{{ route('categories.store') }}" method="POST">
+            @csrf 
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="ex. php, laravel, HTML">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Create</button>
+        </form>    
     </div>
-</div>
+
 
 @if (session('success_message'))
     <div class="alert alert-success">

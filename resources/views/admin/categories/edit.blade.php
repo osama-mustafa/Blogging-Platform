@@ -16,11 +16,12 @@
 
     <div class="col-10">
 
-        <form method="POST" action="{{ route('categories.update', ['category_id' => $category->id]) }}">
+        <form method="POST" action="{{ route('categories.update', ['category' => $category]) }}">
             @csrf
+            @method('PATCH')
             <div class="form-group">
-                <label for="category_name">Category</label>
-                <input type="text" class="form-control" name="category_name" id="category_name" value="{{ $category->category_name }}">
+                <label for="name">Category</label>
+                <input type="text" class="form-control" name="name" value="{{ $category->name }}">
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

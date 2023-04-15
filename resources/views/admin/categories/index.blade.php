@@ -3,9 +3,12 @@
 @section('content')
     
     <h2>Create Category</h2>
+
+    <x-messages.error />
+
     <div class="col-md-5 mb-4">
         <form action="{{ route('categories.store') }}" method="POST">
-            @csrf 
+            @csrf
             <div class="form-group">
                 <input type="text" name="name" class="form-control" placeholder="ex. php, laravel, HTML">
             </div>
@@ -37,10 +40,10 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>
-                        <a href="{{ route('categories.edit', ['category_id' => $category->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
                     </td>
                     <td>
-                        <form action="{{ route('categories.delete', ['category_id' => $category->id]) }}" method="POST">
+                        <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-trash"></i> Delete</button>

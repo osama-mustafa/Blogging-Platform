@@ -33,7 +33,6 @@ Route::middleware(['auth', 'admin'])->group(function() {
     // Routes for users
     Route::get('/users/make-admin/{user_id}', [UserController:: class, 'addAdmin'])->name('make.admin');
     Route::get('/users/remove-admin/{user_id}', [UserController::class, 'removeAdmin'])->name('remove.admin');
-    Route::resource('users', UserController::class);
 
 
     // Route For Posts
@@ -45,13 +44,6 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/posts/trashed/restore/{post_id}', [PostController::class, 'restoreTrashed'])->name('restore.trashed.post');
     Route::delete('/posts/trashed/delete/{post_id}', [PostController::class, 'deleteTrashed'])->name('delete.trashed.post');
 
-    // Routes For Tags
-    // Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
-    // Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
-    // Route::post('/tags/store', [TagController::class, 'store'])->name('tags.store');
-    // Route::delete('/tags/delete/{tag_id}', [TagController::class, 'destroy'])->name('tags.delete');
-    Route::resource('tags', TagController::class);
-
 
     // Routes For Comments
     Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
@@ -59,13 +51,11 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/comments/disapprove/{comment_id}', [CommentController::class, 'disapproveComment'])->name('disapprove.comment');
     Route::delete('/comments/delete/{comment_id}', [CommentController::class, 'destroy'])->name('delete.comment');
 
-    // Routes For Categories
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories/edit/{category_id}', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::post('/categories/update/{category_id}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/delete/{category_id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+    Route::resources([
+        'users' => UserController::class,
+        'tags' => TagController::class,
+        'categories' => CategoryController::class
+    ]);
 
     // Route For Messages
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');

@@ -3,20 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
-use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
-
-   
-    // Show All Messages From Contact Form in Admin Dashboard
-    
     public function index()
     {
-        $messages = Message::paginate(4);
+        $messages = Message::paginate(8);
         return view ('admin.messages.index')->with([
             'messages' => $messages
         ]);
     }
 
+    public function show(Message $message)
+    {
+        return view('admin.messages.show')->with([
+            'message' => $message
+        ]);
+    }
+
+    public function destroy(Message $message)
+    {
+        $message->delete();
+        return back()->with([
+            'success_message' => 'Message has been deleted'
+        ]);
+    }
 }

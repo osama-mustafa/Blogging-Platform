@@ -54,12 +54,9 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resources([
         'users' => UserController::class,
         'tags' => TagController::class,
-        'categories' => CategoryController::class
+        'categories' => CategoryController::class,
+        'messages' => MessageController::class
     ]);
-
-    // Route For Messages
-    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
-
 });
 
 

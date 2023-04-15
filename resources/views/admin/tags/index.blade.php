@@ -2,13 +2,19 @@
 
 @section('content')
     
-<h2 class="mb-4">Tags</h2>
-<hr>
-@if (session('success_message'))
-    <div class="alert alert-success">
-        {{ session('success_message') }}
-    </div>
-@endif
+    <h2 class="mb-4">Tags</h2>
+    <hr>
+    
+    @if (session('success_message'))
+        <div class="alert alert-success">
+            {{ session('success_message') }}
+        </div>
+    @endif
+
+    <!-- Error Component -->
+    <x-messages.error />
+
+
 
 <div class="col-md-10">
 

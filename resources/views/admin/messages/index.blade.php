@@ -17,20 +17,24 @@
             <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">title</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($messages as $message)
                     <tr>
-                        <td>{{ $message->id }}</td>
-                        <td>{{ $message->title }}</td>
-                        <td>{{ $message->body }}</td>
-                        <td>{{ $message->name }}</td>
-                        <td>{{ $message->email }}</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>                        
+                            <a href="{{ route('messages.show', ['message' => $message]) }}">{{ $message->title }}</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('messages.destroy', ['message' => $message]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-primary btn-sm"> <i class="fas fa-trash"></i> Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

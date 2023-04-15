@@ -4,6 +4,7 @@
     
     <h2>Create Category</h2>
 
+    <!-- Error Component -->
     <x-messages.error />
 
     <div class="col-md-5 mb-4">

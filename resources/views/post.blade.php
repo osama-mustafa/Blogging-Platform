@@ -50,12 +50,11 @@
         <hr>
 
         <!-- Post Content -->
-
         <p>{!! $post->body !!}</p>
         @auth
             @if (auth()->user()->is_admin)
                 <div>
-                    <a href="{{ route('posts.edit', ['post_id' => $post->id]) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-primary">Edit</a>
                 </div>
             @endif
         @endauth

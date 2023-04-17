@@ -14,7 +14,6 @@ trait ImageUpload {
             $inputName => ['required', 'image', 'mimes:jpeg,png,jpg,gif|max:2048'],
         ]);
 
-
         // Create unique name for the image
         $file  = $request->$inputName;
         $name  =  $file->hashName();

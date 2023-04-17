@@ -16,11 +16,11 @@
 
     <div class="col-10">
 
-        <form method="POST" action="{{ route('posts.update', ['post_id' => $post->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
               <label for="post_title">Title</label>
-              <input type="text" class="form-control" name="post_title" id="post_title" value="{{ $post->title }}">
+              <input type="text" class="form-control" name="title" id="title" value="{{ $post->title }}">
             </div>
             <div class="form-group">
               <label for="post_body">Content</label>
@@ -52,7 +52,7 @@
                 <input type="file" name="post_image" id="post_image">
             </div>
             <div>
-                <img src="{{ asset('/img') }}/{{$post->post_image}}" width="100" class="mb-3" alt="">
+                <img src="{{ asset('/img') }}/{{$post->image}}" width="100" class="mb-3" alt="">
             </div>
             <button type="submit" class="btn btn-primary">Update Post</button>
 

@@ -45,10 +45,10 @@
                             
                         </td>
                         <td>
-                            <a href="{{ route('posts.edit', ['post_id' => $post->id]) }}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Edit</a>
+                            <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Edit</a>
                         </td>
                         <td>
-                            <form action="{{ route('posts.delete', ['post_id' => $post->id]) }}" method="POST">
+                            <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
                                 @csrf 
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-trash"></i> Delete</button>

@@ -50,8 +50,8 @@
                                     @if ($post->categories->count() > 0)
                                         @foreach ($post->categories as $category)
                                             <i class="fas fa-folder mr-1"></i>
-                                            <a href="{{ route('category.page', ['category_name' => $category->category_name]) }}">
-                                                {{ $category->category_name }}
+                                            <a href="{{ route('category.page', ['category_name' => $category->name]) }}">
+                                                {{ $category->name }}
                                             </a>  
                                         @endforeach
                                     @endif

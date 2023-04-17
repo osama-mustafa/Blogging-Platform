@@ -28,7 +28,6 @@ class PostFactory extends Factory
             'body'          => $this->faker->paragraph(4),
             'slug'          => Str::slug($title),
             'user_id'       => $this->faker->numberBetween(1, 10),
-            'category_id'   => $this->faker->numberBetween(1, 5)
         ];
     }
 }

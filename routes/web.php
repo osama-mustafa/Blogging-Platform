@@ -36,10 +36,10 @@ Route::middleware(['auth', 'admin'])->group(function() {
 
 
     // Route For Posts
-    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/posts/edit/{post_id}', [PostController::class, 'edit'])->name('posts.edit');
-    Route::post('/posts/update/{post_id}', [PostController::class, 'update'])->name('posts.update');
-    Route::delete('/posts/delete/{post_id}', [PostController::class, 'destroy'])->name('posts.delete');
+    // Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+    // Route::get('/posts/edit/{post_id}', [PostController::class, 'edit'])->name('posts.edit');
+    // Route::post('/posts/update/{post_id}', [PostController::class, 'update'])->name('posts.update');
+    // Route::delete('/posts/delete/{post_id}', [PostController::class, 'destroy'])->name('posts.delete');
     Route::get('/posts/trashed', [PostController:: class, 'trashedPosts'])->name('trashed.posts');
     Route::get('/posts/trashed/restore/{post_id}', [PostController::class, 'restoreTrashed'])->name('restore.trashed.post');
     Route::delete('/posts/trashed/delete/{post_id}', [PostController::class, 'deleteTrashed'])->name('delete.trashed.post');
@@ -52,10 +52,11 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::delete('/comments/delete/{comment_id}', [CommentController::class, 'destroy'])->name('delete.comment');
 
     Route::resources([
-        'users' => UserController::class,
-        'tags' => TagController::class,
-        'categories' => CategoryController::class,
-        'messages' => MessageController::class
+        'users'         => UserController::class,
+        'tags'          => TagController::class,
+        'categories'    => CategoryController::class,
+        'messages'      => MessageController::class,
+        'posts'         => PostController::class
     ]);
 });
 
@@ -65,9 +66,9 @@ Route::middleware('auth')->group(function() {
     // Route For Dashboard
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
-    // Routes For Posts
-    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-    Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+    // // Routes For Posts
+    // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    // Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 
 
     // Route For Profile
@@ -80,26 +81,20 @@ Route::middleware('auth')->group(function() {
 // Route For Website Homepage
 Route::get('/', [HomepageController::class, 'homepage'])->name('homepage');
 
-
 // Route For Every Single Post
 Route::get('/post/{post_id}/{post_slug}', [HomepageController::class, 'singlePost'])->name('single.post');
-
 
 // Send Comment For Visitors
 Route::post('/comments/{post_id}/store/', [CommentController::class, 'store'])->name('comments.store');
 
-
 // Route For Search
 Route::get('/search', [HomepageController::class, 'searchEngine'])->name('search.engine');
-
 
 // Route For About Page
 Route::get('/about', [HomepageController::class, 'about'])->name('about');
 
-
 // Route For Category Page
 Route::get('/category/{category_name}', [HomepageController::class, 'categoryPage'])->name('category.page');
-
 
 //Route For Author Page
 Route::get('/author/{user_name}', [HomepageController::class, 'authorPage'])->name('author.page');

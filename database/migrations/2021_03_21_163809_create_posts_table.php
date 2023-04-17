@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->string('slug');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();

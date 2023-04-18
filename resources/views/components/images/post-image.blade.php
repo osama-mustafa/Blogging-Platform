@@ -2,12 +2,20 @@
         'post',
         'width',
         'height',
-        'imagePath',
-        'defaultImagePath'
+        'postImage',
+        'defaultImage'
     ])
 
 @if ($post->image)
-    <img src="{{ $imagePath }}/{{$post->image}}" class="img-thumbnail" width="{{$width}}" height="{{$height}}" alt="">
+    <img 
+        src="{{ $postImage }}"
+        width="{{ $width }}"
+        height="{{ $height}}"
+    >
 @else
-    <img src="{{ $defaultImagePath }}" class="img-thumbnail" width="{{$width}}" height="{{$height}}" alt="">
+    <img
+        src="{{ $defaultImage }}"
+        width="{{ $width }}"
+        height="{{ $height }}"
+    >
 @endif

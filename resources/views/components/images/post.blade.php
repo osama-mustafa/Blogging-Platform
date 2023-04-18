@@ -3,7 +3,8 @@
         'width',
         'height',
         'postImage',
-        'defaultImage'
+        'defaultImage',
+        'class'
     ])
 
 @if ($post->image)
@@ -11,11 +12,13 @@
         src="{{ $postImage }}"
         width="{{ $width }}"
         height="{{ $height}}"
+        class="{{ $class }}"
     >
 @else
     <img
         src="{{ $defaultImage }}"
         width="{{ $width }}"
         height="{{ $height }}"
+        class="{{ $class }}"
     >
 @endif

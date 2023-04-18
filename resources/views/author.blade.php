@@ -28,6 +28,7 @@
                     :user-image='asset("storage/images/{$user->image}")'
                     :width='200'
                     :height='200'
+                    :class="'rounded'"
                 />
 
                 <div class="col">

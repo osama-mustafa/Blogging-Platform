@@ -38,6 +38,7 @@
                                 :width="100"
                                 :post-image='asset("storage/images/{$post->image}")' 
                                 :default-image="asset('img/post.png')"
+                                :class="''"
                             />
 
                         </td>

@@ -29,23 +29,31 @@
 
             </div>
 
-            <h5>Categories</h5>
-            @foreach ($categories as $category)
-                <div class="checkbox">
-                    <input type="checkbox" name="categories[]" id="{{ $category->name }}"
-                     value="{{ $category->id }}" {{ in_array($category->id, $postCategories) ? 'checked' : '' }}>
-                    <label for="{{ $category->name }}">{{ $category->name }}</label>
-                </div>
-            @endforeach
+            {{-- Categories & Tags --}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Categories</h5>
+                        @foreach ($categories as $category)
+                            <div class="checkbox">
+                                <input type="checkbox" name="categories[]" id="{{ $category->name }}"
+                                value="{{ $category->id }}" {{ in_array($category->id, $postCategories) ? 'checked' : '' }}>
+                                <label for="{{ $category->name }}">{{ $category->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
 
-            <h5 class="mt-2">Tags</h5>
-            @foreach ($tags as $tag)
-                <div class="checkbox">
-                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]"  {{ in_array($tag->id, $postTags) ? 'checked' : '' }}>
-                    <label for="">{{ $tag->name }}</label>
+                    <div class="col-md-6">
+                        <h5 class="mt-2">Tags</h5>
+                        @foreach ($tags as $tag)
+                            <div class="checkbox">
+                                <input type="checkbox" value="{{ $tag->id }}" name="tags[]"  {{ in_array($tag->id, $postTags) ? 'checked' : '' }}>
+                                <label for="">{{ $tag->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            @endforeach
-
+            </div>
 
             <div class="form-group">
                 <label for="post_image">Image</label><br>
@@ -55,8 +63,6 @@
                 <img src="{{ asset('/img') }}/{{$post->image}}" width="100" class="mb-3" alt="">
             </div>
             <button type="submit" class="btn btn-primary">Update Post</button>
-
-
 
         </form>
 

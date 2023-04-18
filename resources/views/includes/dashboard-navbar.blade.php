@@ -25,11 +25,6 @@
                             :height="100"
                             :class="'img-profile rounded-circle'"
                         />
-                        {{-- @if (auth()->user()->image)
-                            <img class="img-profile rounded-circle" src="{{ asset('storage/images') }}/{{ auth()->user()->image }}">
-                        @else 
-                            <img class="img-profile rounded-circle" src="{{ asset('/img/profile.png') }}">
-                        @endif --}}
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

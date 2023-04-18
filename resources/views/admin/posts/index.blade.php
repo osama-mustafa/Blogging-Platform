@@ -32,7 +32,14 @@
                             </a> 
                         </td>
                         <td>
-                            <x-images.post-image :post="$post" :height="100" :width="100" />
+                            <x-images.post-image 
+                                :post="$post"
+                                :height="100"
+                                :width="100"
+                                :imagePath='asset("storage/images/")' 
+                                :defaultImagePath="asset('img/post.png')"
+                            />
+
                         </td>
                         <td>
                             <a href="{{ route('author.page', ['user_name' => $post->user->name]) }}">{{ $post->user->name }}</a>

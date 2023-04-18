@@ -56,7 +56,13 @@
             </div>
 
             <!-- Post image -->
-            <x-images.post-image :post="$post" :height="200" :width="200" />
+            <x-images.post-image 
+                :post="$post"
+                :height="200"
+                :width="200"
+                :imagePath='asset("storage/images/")' 
+                :defaultImagePath="asset('img/post.png')"
+            />
 
             <div class="form-group">
                 <label for="post_image">Image</label><br>

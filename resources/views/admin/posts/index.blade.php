@@ -36,8 +36,8 @@
                                 :post="$post"
                                 :height="100"
                                 :width="100"
-                                :imagePath='asset("storage/images/")' 
-                                :defaultImagePath="asset('img/post.png')"
+                                :image-path='asset("storage/images/")' 
+                                :default-image-Path="asset('img/post.png')"
                             />
 
                         </td>

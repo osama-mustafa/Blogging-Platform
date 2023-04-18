@@ -60,8 +60,8 @@
                 :post="$post"
                 :height="200"
                 :width="200"
-                :imagePath='asset("storage/images/")' 
-                :defaultImagePath="asset('img/post.png')"
+                :image-path='asset("storage/images/")' 
+                :default-image-Path="asset('img/post.png')"
             />
 
             <div class="form-group">

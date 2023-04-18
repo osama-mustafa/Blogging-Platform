@@ -55,13 +55,22 @@
                 </div>
             </div>
 
+            <!-- Post image -->
+            @if ($post->image)
+                <div>
+                    <img class="big-avatar mb-3" src="{{ asset('storage/images/') }}/{{ $post->image }}" alt="avatar">
+                </div>
+            @else
+                <div>
+                    <img class="big-avatar mb-3" src="{{ asset('/img/post.png') }}" alt="avatar">
+                </div>
+            @endif
+
             <div class="form-group">
                 <label for="post_image">Image</label><br>
                 <input type="file" name="post_image" id="post_image">
             </div>
-            <div>
-                <img src="{{ asset('/img') }}/{{$post->image}}" width="100" class="mb-3" alt="">
-            </div>
+
             <button type="submit" class="btn btn-primary">Update Post</button>
 
         </form>

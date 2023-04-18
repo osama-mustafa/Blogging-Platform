@@ -28,24 +28,29 @@
             </div>
 
             
-
-            <h5 class="mt-3">Categories</h5>
-
-            @foreach ($categories as $category)
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="categories[]" value="{{ $category->id }}">
-                    </label class="custom-control-label">{{ $category->name }}<label>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Categories</h5>
+                        @foreach ($categories as $category)
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                                </label class="custom-control-label">{{ $category->name }}<label>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Tags</h5>
+                        @foreach ($tags as $tag)
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}">
+                                <label>{{ $tag->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            @endforeach
+            </div>
 
-            <h5 class="mt-3">Tags</h5>
-            
-            @foreach ($tags as $tag)
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="tags[]" value="{{ $tag->id }}">
-                    <label>{{ $tag->name }}</label>
-                </div>
-            @endforeach
 
             <div class="form-group mt-2">
                 <label for="image">Image</label><br>
@@ -55,8 +60,6 @@
         </form>
 
     </div>
-
-    
 
 @endsection
 

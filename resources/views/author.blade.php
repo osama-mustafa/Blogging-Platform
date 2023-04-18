@@ -22,7 +22,7 @@
             <hr>
             <div class="row">
 
-                <x-images.user-image
+                <x-images.user
                     :user="$user"
                     :default-image="asset('img/profile.png')"
                     :user-image='asset("storage/images/{$user->image}")'

@@ -32,7 +32,7 @@
                             </a> 
                         </td>
                         <td>
-                            <x-images.post-image 
+                            <x-images.post 
                                 :post="$post"
                                 :height="100"
                                 :width="100"

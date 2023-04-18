@@ -56,7 +56,7 @@
             </div>
 
             <!-- Post image -->
-            <x-images.post-image 
+            <x-images.post
                 :post="$post"
                 :height="200"
                 :width="200"

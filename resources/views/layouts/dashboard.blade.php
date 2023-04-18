@@ -5,6 +5,7 @@
 
         <h2>Welcome {{auth()->user()->name}} !</h2>
 
+
         <!-- Content Row -->
         <div class="row">
 

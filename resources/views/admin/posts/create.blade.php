@@ -27,6 +27,8 @@
                 <x-forms.tinymce-editor name="body" value=""/>
             </div>
 
+            
+
             <h5 class="mt-3">Categories</h5>
 
             @foreach ($categories as $category)

@@ -56,15 +56,7 @@
             </div>
 
             <!-- Post image -->
-            @if ($post->image)
-                <div>
-                    <img class="big-avatar mb-3" src="{{ asset('storage/images/') }}/{{ $post->image }}" alt="avatar">
-                </div>
-            @else
-                <div>
-                    <img class="big-avatar mb-3" src="{{ asset('/img/post.png') }}" alt="avatar">
-                </div>
-            @endif
+            <x-images.post-image :post="$post" :height="200" :width="200" />
 
             <div class="form-group">
                 <label for="post_image">Image</label><br>

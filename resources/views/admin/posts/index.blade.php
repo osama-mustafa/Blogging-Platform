@@ -31,15 +31,9 @@
                                 {{ $post->title }}
                             </a> 
                         </td>
-                        @if ($post->image)
-                            <td>
-                                <img src="{{ asset('img/') }}/{{$post->image}}" class="img-thumbnail" width="100" alt="">
-                            </td>
-                        @else
-                            <td>
-                                <img src="{{ asset('img/post.png') }}" class="img-thumbnail" width="100" alt="">
-                            </td>
-                        @endif
+                        <td>
+                            <x-images.post-image :post="$post" :height="100" :width="100" />
+                        </td>
                         <td>
                             <a href="{{ route('author.page', ['user_name' => $post->user->name]) }}">{{ $post->user->name }}</a>
                             

@@ -37,10 +37,9 @@ class PostController extends Controller
         try {
             DB::beginTransaction();
             $validatedData = $request->validated();
-            if ($request->filled('image')) {
+            if ($request->hasFile('image')) {
                 $validatedData['image'] = $this->handleUploadImage($request);
-            }
-    
+            }    
             $post = Post::create([
                 'title'     => $validatedData['title'],
                 'slug'      => Str::slug($validatedData['title']),

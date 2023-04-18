@@ -18,6 +18,10 @@ trait ImageUpload {
         $file  = $request->$inputName;
         $name  =  $file->hashName();
 
+        if (!Storage::exists($path)) {
+            Storage::makeDirectory($path);
+        }
+
         // Save image to specific directory
         $path = Storage::putFileAs($path, $file, $name);
         return $name;

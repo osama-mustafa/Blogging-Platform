@@ -56,14 +56,21 @@
             </div>
 
             <!-- Post image -->
-            <x-images.post
-                :post="$post"
-                :height="200"
-                :width="200"
-                :post-image='asset("storage/images/{$post->image}")' 
-                :default-image="asset('img/post.png')"
-                :class="'rounded'"
-            />
+                        @if ($post->image)
+                            <x-images.avatar 
+                                :src='asset("storage/images/{$post->image}")' 
+                                :height="200"
+                                :width="200"
+                                :class="'rounded'"
+                            />
+                        @else
+                            <x-images.avatar 
+                                :src='asset("img/post.png")' 
+                                :height="200"
+                                :width="200"
+                                :class="'rounded'"
+                            />
+                        @endif
 
             <div class="form-group">
                 <label for="post_image">Image</label><br>

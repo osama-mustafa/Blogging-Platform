@@ -31,17 +31,25 @@
                                 {{ $post->title }}
                             </a> 
                         </td>
-                        <td>
-                            <x-images.post 
-                                :post="$post"
-                                :height="100"
-                                :width="100"
-                                :post-image='asset("storage/images/{$post->image}")' 
-                                :default-image="asset('img/post.png')"
-                                :class="''"
-                            />
-
-                        </td>
+                        @if ($post->image)
+                            <td>
+                                <x-images.avatar 
+                                    :src='asset("storage/images/{$post->image}")' 
+                                    :height="100"
+                                    :width="100"
+                                    :class="'rounded'"
+                                />
+                            </td>
+                        @else
+                            <td>
+                                <x-images.avatar 
+                                    :src='asset("img/post.png")' 
+                                    :height="100"
+                                    :width="100"
+                                    :class="'rounded'"
+                                />
+                            </td>
+                        @endif
                         <td>
                             <a href="{{ route('author.page', ['user_name' => $post->user->name]) }}">{{ $post->user->name }}</a>
                             

@@ -22,15 +22,21 @@
             <hr>
             <div class="row">
 
-                <x-images.user
-                    :user="$user"
-                    :default-image="asset('img/profile.png')"
-                    :user-image='asset("storage/images/{$user->image}")'
+                @if($user->image)
+                    <x-images.avatar
+                    :src='asset("storage/images/{$user->image}")'
                     :width='200'
                     :height='200'
                     :class="'rounded'"
-                />
-
+                    />
+                @else 
+                    <x-images.avatar
+                    :src='asset("img/profile.png")'
+                    :width='200'
+                    :height='200'
+                    :class="'rounded'"
+                    />
+                @endif
                 <div class="col">
                     <p>{{ $user->bio }}</p>
                 </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2>Edit Your Profile</h2>
+    <h2>Edit Profile</h2>
 
     @if (session('success_message'))
         <div class="alert alert-success">
@@ -48,9 +48,25 @@
             </div>
 
             <!-- Profile image -->
-            <x-images.avatar :user="auth()->user()" />
+                @if($user->image)
+                    <x-images.avatar
+                    :src='asset("storage/images/{$user->image}")'
+                    :width='200'
+                    :height='200'
+                    :class="'rounded'"
+                    />
+                @else 
+                    <x-images.avatar
+                    :src='asset("img/profile.png")'
+                    :width='200'
+                    :height='200'
+                    :class="'rounded'"
+                    />
+                @endif
 
-            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </div>
         </form>
 
     </div>

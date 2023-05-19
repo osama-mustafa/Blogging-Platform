@@ -10,7 +10,14 @@ class AuthenticationTest extends TestCase
 {
 
     use RefreshDatabase;
-    
+    private $user;
+
+    public function setUp() : void
+    {
+        parent::setUp();
+        $this->user = createUserForTesting('test_firet_user', 'test_firet_user@gmail.com');
+    }
+
     public function test_login_page_is_loaded_successfully()
     {
         // Arrange
@@ -21,6 +28,7 @@ class AuthenticationTest extends TestCase
         
         // Assert
         $response->assertOk();
+        $response->assertViewIs('auth.login');
         $response->assertSeeText('Login');
     }
 
@@ -34,6 +42,7 @@ class AuthenticationTest extends TestCase
 
         // Arrange
         $response->assertOk();
+        $response->assertViewIs('auth.register');
         $response->assertSeeText('Register');
     }
 
@@ -56,7 +65,16 @@ class AuthenticationTest extends TestCase
         $response->assertRedirectToRoute('home');
         $this->assertAuthenticated();
         $this->assertDatabaseHas('users', [
+            'name' => 'first_user',
             'email' => 'test_email@gmail.com'
         ]);
+    }
+
+    public function tearDown() : void
+    {
+        if ($this->user) {
+            $this->user->delete();
+        }
+        parent::tearDown();
     }
 }

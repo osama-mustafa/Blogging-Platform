@@ -70,6 +70,26 @@ class AuthenticationTest extends TestCase
         ]);
     }
 
+    public function test_guest_cannot_register_an_account_without_email()
+    {
+        // Arrange
+        $data = [
+            'name' => 'first_user',
+            'password' => '12345678',
+            'password_confirmation' => '12345678',
+        ];
+        $registerRoute = 'register';
+
+        // Act
+        $response = $this->post(route($registerRoute), $data);
+
+        // Assert
+        $response->assertInvalid([
+            'email' => 'The email field is required'
+        ]);
+
+    }
+
     public function tearDown() : void
     {
         if ($this->user) {

@@ -48,6 +48,19 @@ class AuthenticationTest extends TestCase
         $response->assertSeeText('Register');
     }
 
+    public function test_reset_password_page_is_loaded_successfully()
+    {
+        // Arrange
+
+        // Act
+        $response = $this->get('password/reset');
+
+        // Assert
+        $response->assertOk();
+        $response->assertViewIs('auth.passwords.email');
+        $response->assertSeeText('Reset Password');
+    }
+
     public function test_guest_user_can_register_an_account()
     {
         // Arrange

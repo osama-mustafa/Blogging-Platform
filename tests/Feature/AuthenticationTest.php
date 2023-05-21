@@ -11,20 +11,23 @@ class AuthenticationTest extends TestCase
 
     use RefreshDatabase;
     private $user;
+    private $loginRoute = 'login';
+    private $registerRoute = 'register';
+    private $logoutRoute = 'logout';
+
 
     public function setUp() : void
     {
         parent::setUp();
-        $this->user = createUserForTesting('test_firet_user', 'test_firet_user@gmail.com');
+        $this->user = createUserForTesting('test_first_user', 'test_firet_user@gmail.com');
     }
 
     public function test_login_page_is_loaded_successfully()
     {
         // Arrange
-        $loginRoute = 'login';
 
         // Act 
-        $response = $this->get(route($loginRoute));
+        $response = $this->get(route($this->loginRoute));
         
         // Assert
         $response->assertOk();
@@ -35,10 +38,9 @@ class AuthenticationTest extends TestCase
     public function test_register_page_is_loaded_successfully()
     {
         // Arrange
-        $registerRoute = 'register';
 
         // Act
-        $response = $this->get(route($registerRoute));
+        $response = $this->get(route($this->registerRoute));
 
         // Arrange
         $response->assertOk();
@@ -55,10 +57,9 @@ class AuthenticationTest extends TestCase
             'password' => '12345678',
             'password_confirmation' => '12345678',
         ];
-        $registerRoute = 'register';
 
         // Act
-        $response = $this->post(route($registerRoute), $data);
+        $response = $this->post(route($this->registerRoute), $data);
 
         // Assert
         $response->assertStatus(302);
@@ -78,16 +79,74 @@ class AuthenticationTest extends TestCase
             'password' => '12345678',
             'password_confirmation' => '12345678',
         ];
-        $registerRoute = 'register';
 
         // Act
-        $response = $this->post(route($registerRoute), $data);
+        $response = $this->post(route($this->registerRoute), $data);
 
         // Assert
         $response->assertInvalid([
             'email' => 'The email field is required'
         ]);
 
+    }
+
+    public function test_guest_should_confirm_password_when_create_a_new_account()
+    {
+        // Arrange
+        $data = [
+            'name' => 'first_user',
+            'email' => 'test_email@gmail.com',
+            'password' => '12345678',
+        ];
+
+        // Act
+        $response = $this->post(route($this->registerRoute), $data);
+
+        // Assert
+        $response->assertInvalid('password');
+        $response->assertSessionHasErrors('password');
+        
+    }
+
+    public function test_authenticated_user_cannot_access_register_page()
+    {
+        // Arrange
+
+        // Act
+        $response = $this->actingAs($this->user)->get(route('home'));
+        $response = $this->actingAs($this->user)->get(route($this->registerRoute));
+
+
+        // Assert
+        $response->assertStatus(302);
+        $response->assertRedirectToRoute('home');
+    }
+
+    public function test_authenticated_user_cannot_access_login_page()
+    {
+        // Arrange
+
+        // Act
+        $response = $this->actingAs($this->user)->get(route('home'));
+        $response = $this->actingAs($this->user)->get($this->loginRoute);
+
+        //
+        $response->assertStatus(302);
+        $response->assertRedirectToRoute('home');
+
+
+    }
+
+    public function test_authenticated_user_can_logout()
+    {
+        // Arrange
+
+        // Act
+        $response = $this->actingAs($this->user)->post(route('logout'));
+
+        // Assert
+        $response->assertStatus(302);
+        $this->assertGuest();
     }
 
     public function tearDown() : void

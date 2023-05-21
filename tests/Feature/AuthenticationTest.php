@@ -51,7 +51,7 @@ class AuthenticationTest extends TestCase
     public function test_guest_user_can_register_an_account()
     {
         // Arrange
-        $data = [
+        $userData = [
             'name' => 'first_user',
             'email' => 'test_email@gmail.com',
             'password' => '12345678',
@@ -59,7 +59,7 @@ class AuthenticationTest extends TestCase
         ];
 
         // Act
-        $response = $this->post(route($this->registerRoute), $data);
+        $response = $this->post(route($this->registerRoute), $userData);
 
         // Assert
         $response->assertStatus(302);
@@ -74,18 +74,19 @@ class AuthenticationTest extends TestCase
     public function test_guest_cannot_register_an_account_without_email()
     {
         // Arrange
-        $data = [
+        $userData = [
             'name' => 'first_user',
             'password' => '12345678',
             'password_confirmation' => '12345678',
         ];
 
         // Act
-        $response = $this->post(route($this->registerRoute), $data);
+        $response = $this->post(route($this->registerRoute), $userData);
 
         // Assert
-        $response->assertInvalid([
-            'email' => 'The email field is required'
+        $response->assertInvalid('email');
+        $response->assertSessionHasErrors([
+            'email' => 'The email field is required.',
         ]);
 
     }
@@ -93,18 +94,20 @@ class AuthenticationTest extends TestCase
     public function test_guest_should_confirm_password_when_create_a_new_account()
     {
         // Arrange
-        $data = [
+        $userData = [
             'name' => 'first_user',
             'email' => 'test_email@gmail.com',
             'password' => '12345678',
         ];
 
         // Act
-        $response = $this->post(route($this->registerRoute), $data);
+        $response = $this->post(route($this->registerRoute), $userData);
 
         // Assert
         $response->assertInvalid('password');
-        $response->assertSessionHasErrors('password');
+        $response->assertSessionHasErrors([
+            'password' => 'The password confirmation does not match.'
+        ]);
         
     }
 
